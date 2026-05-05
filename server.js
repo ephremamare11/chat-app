@@ -25,12 +25,9 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ✅ Serve React build folder
-app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-// ✅ Fallback route for SPA
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+app.get("/", (req, res) => {
+  res.send("Chat app server is running");
 });
 
 // ✅ Socket.io logic
